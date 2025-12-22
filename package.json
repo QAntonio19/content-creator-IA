@@ -1,0 +1,19 @@
+{
+    "name": "n8n-webhook-sender",
+    "version": "1.0.0",
+    "description": "Send messages and images to n8n workflows via Form Trigger",
+    "main": "index.html",
+    "scripts": {
+      "start": "npx serve .",
+      "dev": "npx serve . -p 3000",
+      "proxy": "node proxy-server.js"
+    },
+    "keywords": [
+      "n8n",
+      "webhook",
+      "form",
+      "automation"
+    ],
+    "author": "",
+    "license": "MIT"
+  }

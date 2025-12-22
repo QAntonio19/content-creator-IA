@@ -1,211 +1,177 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Content Creator IA | Legal</title>
+    <title>Genera contenido con IA</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-bg: #0a0a0f;
-            --color-bg-secondary: #12121a;
-            --color-text: #e8e6e3;
-            --color-text-muted: #9a9a9a;
-            --color-accent-1: #00d4aa;
-            --color-accent-2: #6366f1;
-            --color-border: rgba(255, 255, 255, 0.08);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--color-bg);
-            color: var(--color-text);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at 30% 20%, rgba(0, 212, 170, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 80%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 100px,
-                    var(--color-border) 100px,
-                    var(--color-border) 101px
-                ),
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 100px,
-                    var(--color-border) 100px,
-                    var(--color-border) 101px
-                );
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .container {
-            text-align: center;
-            padding: 40px 24px;
-            max-width: 600px;
-            animation: fadeIn 1s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .logo {
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, var(--color-accent-1), var(--color-accent-2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 32px;
-        }
-
-        h1 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: -1px;
-        }
-
-        .subtitle {
-            color: var(--color-text-muted);
-            font-size: 1.1rem;
-            font-weight: 300;
-            margin-bottom: 48px;
-        }
-
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            max-width: 320px;
-            margin: 0 auto;
-        }
-
-        .link-card {
-            display: block;
-            padding: 24px;
-            background: var(--color-bg-secondary);
-            border: 1px solid var(--color-border);
-            border-radius: 16px;
-            text-decoration: none;
-            color: var(--color-text);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .link-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--color-accent-1);
-            transform: scaleY(0);
-            transition: transform 0.3s ease;
-        }
-
-        .link-card.privacy::before {
-            background: var(--color-accent-1);
-        }
-
-        .link-card.terms::before {
-            background: var(--color-accent-2);
-        }
-
-        .link-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            border-color: rgba(255, 255, 255, 0.15);
-        }
-
-        .link-card:hover::before {
-            transform: scaleY(1);
-        }
-
-        .link-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .link-description {
-            font-size: 0.875rem;
-            color: var(--color-text-muted);
-            font-weight: 300;
-        }
-
-        .link-card.privacy .link-title {
-            color: var(--color-accent-1);
-        }
-
-        .link-card.terms .link-title {
-            color: var(--color-accent-2);
-        }
-
-        footer {
-            margin-top: 60px;
-            font-size: 0.875rem;
-            color: var(--color-text-muted);
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="background-pattern"></div>
+    
     <div class="container">
-        <div class="logo">Content Creator IA</div>
-        <h1>Documentos Legales</h1>
-        <p class="subtitle">Información importante sobre nuestras políticas y términos de uso</p>
-        
-        <div class="links">
-            <a href="privacy-policy.html" class="link-card privacy">
-                <div class="link-title">Política de Privacidad</div>
-                <div class="link-description">Cómo recopilamos, usamos y protegemos tu información personal</div>
-            </a>
-            
-            <a href="terms-of-service.html" class="link-card terms">
-                <div class="link-title">Condiciones del Servicio</div>
-                <div class="link-description">Términos y condiciones para el uso de nuestra plataforma</div>
-            </a>
+        <header class="header">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="10" fill="url(#gradient)"/>
+                    <path d="M12 20L18 26L28 14" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <defs>
+                        <linearGradient id="gradient" x1="0" y1="0" x2="40" y2="40">
+                            <stop offset="0%" stop-color="#FF7A00"/>
+                            <stop offset="100%" stop-color="#FF9A40"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <h1>Genera contenido con IA</h1>
+            </div>
+            <p class="subtitle">Envía detalles del contenido multimedia que deseas editar con IA</p>
+        </header>
+
+        <main class="main-card">
+            <div class="message-section">
+                <label for="messageInput" class="label">
+                    <span class="label-icon">💬</span>
+                    Descripción de producto <span class="required">*</span>
+                </label>
+                <textarea 
+                    id="messageInput" 
+                    class="input message-input"
+                    placeholder="Escribir descripción..."
+                    rows="5"
+                ></textarea>
+                <div class="char-count">
+                    <span id="charCount">0</span> characters
+                </div>
+            </div>
+
+            <div class="image-section">
+                <label for="imageInput" class="label">
+                    <span class="label-icon">🖼️</span>
+                    Imagen <span class="required">*</span>
+                </label>
+                <div class="image-upload-area" id="imageUploadArea">
+                    <input 
+                        type="file" 
+                        id="imageInput" 
+                        class="image-input-hidden"
+                        accept="image/*"
+                    >
+                    <div class="upload-placeholder" id="uploadPlaceholder">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="17,8 12,3 7,8" stroke-linecap="round" stroke-linejoin="round"/>
+                            <line x1="12" y1="3" x2="12" y2="15" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <p class="upload-text">Clic o arrastra una imagen aquí</p>
+                        <p class="upload-hint">PNG, JPG, GIF hasta 10MB</p>
+                    </div>
+                    <div class="image-preview-container" id="imagePreviewContainer">
+                        <img id="imagePreview" class="image-preview" alt="Preview">
+                        <button type="button" class="remove-image-btn" id="removeImageBtn" title="Remove image">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="6" x2="6" y2="18" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="6" y1="6" x2="18" y2="18" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <p class="hint" id="imageInfo"></p>
+            </div>
+
+            <button id="sendBtn" class="send-button">
+                <span class="button-text">Enviar a n8n</span>
+                <span class="button-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 2L11 13M22 2L15 22L11 13L2 9L22 2Z" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span class="button-loading">
+                    <svg class="spinner" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="31.4 31.4" stroke-linecap="round"/>
+                    </svg>
+                </span>
+            </button>
+
+            <!-- Results Section - Shows after successful submission -->
+            <div id="resultsSection" class="results-section hidden">
+                <div class="results-header">
+                    <span class="results-icon">✅</span>
+                    <h3>Resultado</h3>
+                </div>
+                
+                <div class="result-field">
+                    <label class="label">
+                        <span class="label-icon">🖼️</span>
+                        Link de descarga de imagen
+                    </label>
+                    <div class="result-link-container">
+                        <input 
+                            type="text" 
+                            id="imageResultLink" 
+                            class="input result-input"
+                            readonly
+                            placeholder="Esperando respuesta..."
+                        >
+                        <button type="button" class="copy-btn" id="copyImageLink" title="Copiar link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button type="button" class="download-btn" id="downloadImageLink" title="Descargar imagen">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="7,10 12,15 17,10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="12" y1="15" x2="12" y2="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="result-field">
+                    <label class="label">
+                        <span class="label-icon">🎬</span>
+                        Link de video
+                    </label>
+                    <div class="result-link-container">
+                        <input 
+                            type="text" 
+                            id="videoResultLink" 
+                            class="input result-input"
+                            readonly
+                            placeholder="Esperando respuesta..."
+                        >
+                        <button type="button" class="copy-btn" id="copyVideoLink" title="Copiar link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <button type="button" class="download-btn" id="downloadVideoLink" title="Descargar video">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="7,10 12,15 17,10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="12" y1="15" x2="12" y2="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="notification" class="notification">
+            <span class="notification-icon"></span>
+            <span class="notification-text"></span>
         </div>
 
-        <footer>
-            <p>© 2025 Content Creator IA. Todos los derechos reservados.</p>
+        <footer class="footer">
+            <p>Powered by ExpertizDigital</p>
         </footer>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
