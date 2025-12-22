@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Creator IA | Legal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #0a0a0f;
+            --color-bg-secondary: #12121a;
+            --color-text: #e8e6e3;
+            --color-text-muted: #9a9a9a;
+            --color-accent-1: #00d4aa;
+            --color-accent-2: #6366f1;
+            --color-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 30% 20%, rgba(0, 212, 170, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 100px,
+                    var(--color-border) 100px,
+                    var(--color-border) 101px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 100px,
+                    var(--color-border) 100px,
+                    var(--color-border) 101px
+                );
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px 24px;
+            max-width: 600px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--color-accent-1), var(--color-accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 32px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 48px;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .link-card {
+            display: block;
+            padding: 24px;
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            text-decoration: none;
+            color: var(--color-text);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--color-accent-1);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .link-card.privacy::before {
+            background: var(--color-accent-1);
+        }
+
+        .link-card.terms::before {
+            background: var(--color-accent-2);
+        }
+
+        .link-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .link-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .link-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .link-description {
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            font-weight: 300;
+        }
+
+        .link-card.privacy .link-title {
+            color: var(--color-accent-1);
+        }
+
+        .link-card.terms .link-title {
+            color: var(--color-accent-2);
+        }
+
+        footer {
+            margin-top: 60px;
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">Content Creator IA</div>
+        <h1>Documentos Legales</h1>
+        <p class="subtitle">Información importante sobre nuestras políticas y términos de uso</p>
+        
+        <div class="links">
+            <a href="privacy-policy.html" class="link-card privacy">
+                <div class="link-title">Política de Privacidad</div>
+                <div class="link-description">Cómo recopilamos, usamos y protegemos tu información personal</div>
+            </a>
+            
+            <a href="terms-of-service.html" class="link-card terms">
+                <div class="link-title">Condiciones del Servicio</div>
+                <div class="link-description">Términos y condiciones para el uso de nuestra plataforma</div>
+            </a>
+        </div>
+
+        <footer>
+            <p>© 2025 Content Creator IA. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>
+
