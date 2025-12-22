@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Condiciones del Servicio | Content Creator IA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Crimson+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #0a0a0f;
+            --color-bg-secondary: #12121a;
+            --color-text: #e8e6e3;
+            --color-text-muted: #9a9a9a;
+            --color-accent: #6366f1;
+            --color-accent-secondary: #00d4aa;
+            --color-accent-glow: rgba(99, 102, 241, 0.15);
+            --color-border: rgba(255, 255, 255, 0.08);
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Crimson Pro', Georgia, serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.8;
+            font-size: 18px;
+            min-height: 100vh;
+        }
+
+        /* Background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 80% 0%, var(--color-accent-glow) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 100%, rgba(0, 212, 170, 0.1) 0%, transparent 50%),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 100px,
+                    var(--color-border) 100px,
+                    var(--color-border) 101px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 100px,
+                    var(--color-border) 100px,
+                    var(--color-border) 101px
+                );
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--color-border);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--color-text) 0%, var(--color-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .last-updated {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            font-family: var(--font-heading);
+        }
+
+        main {
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        section {
+            margin-bottom: 48px;
+            padding: 32px;
+            background: var(--color-bg-secondary);
+            border-radius: 16px;
+            border: 1px solid var(--color-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--color-accent);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background: var(--color-accent);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 24px 0 12px 0;
+            color: var(--color-accent-secondary);
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--color-text);
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        ul, ol {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            color: var(--color-text);
+        }
+
+        li::marker {
+            color: var(--color-accent);
+        }
+
+        strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        a:hover {
+            border-bottom-color: var(--color-accent);
+        }
+
+        .highlight-box {
+            background: rgba(99, 102, 241, 0.1);
+            border-left: 4px solid var(--color-accent);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--color-border);
+            margin-top: 60px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+            font-family: var(--font-heading);
+            font-size: 14px;
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            font-family: var(--font-heading);
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 40px 16px;
+            }
+
+            section {
+                padding: 24px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Content Creator IA</div>
+            <h1>Condiciones del Servicio</h1>
+            <p class="last-updated">Última actualización: 22 de diciembre de 2025</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Aceptación de los Términos</h2>
+                <p>Al acceder o utilizar Content Creator IA ("el Servicio"), aceptas quedar vinculado por estas Condiciones del Servicio ("Términos"). Si no estás de acuerdo con alguna parte de estos términos, no podrás acceder al Servicio.</p>
+                <div class="highlight-box">
+                    <p>Te recomendamos leer detenidamente estos Términos antes de usar nuestra plataforma. El uso continuado del Servicio constituye la aceptación de cualquier modificación.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Descripción del Servicio</h2>
+                <p>Content Creator IA es una plataforma de inteligencia artificial diseñada para ayudar a los usuarios a crear contenido digital. Nuestros servicios incluyen, pero no se limitan a:</p>
+                <ul>
+                    <li>Generación de textos y artículos mediante IA.</li>
+                    <li>Asistencia en la creación de contenido para redes sociales.</li>
+                    <li>Herramientas de edición y optimización de contenido.</li>
+                    <li>Sugerencias y plantillas para diferentes tipos de contenido.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Registro y Cuenta de Usuario</h2>
+                <h3>Requisitos de la Cuenta</h3>
+                <p>Para utilizar ciertas funciones del Servicio, debes crear una cuenta. Al registrarte, te comprometes a:</p>
+                <ul>
+                    <li>Proporcionar información precisa, actual y completa.</li>
+                    <li>Mantener la confidencialidad de tu contraseña.</li>
+                    <li>Ser responsable de todas las actividades bajo tu cuenta.</li>
+                    <li>Notificarnos inmediatamente sobre cualquier uso no autorizado.</li>
+                </ul>
+                <h3>Elegibilidad</h3>
+                <p>Debes tener al menos 16 años para usar el Servicio. Al crear una cuenta, declaras que cumples con este requisito de edad.</p>
+            </section>
+
+            <section>
+                <h2>Uso Aceptable</h2>
+                <p>Te comprometes a utilizar el Servicio de manera responsable y legal. Está prohibido:</p>
+                <ul>
+                    <li>Generar contenido ilegal, difamatorio, obsceno o que incite al odio.</li>
+                    <li>Crear contenido que viole derechos de propiedad intelectual de terceros.</li>
+                    <li>Utilizar el Servicio para spam, phishing o actividades fraudulentas.</li>
+                    <li>Intentar acceder sin autorización a sistemas o datos.</li>
+                    <li>Interferir con el funcionamiento normal del Servicio.</li>
+                    <li>Compartir tu cuenta con terceros o revender el acceso.</li>
+                    <li>Usar el Servicio para crear malware o contenido engañoso.</li>
+                    <li>Generar contenido que se haga pasar por otra persona o entidad.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Propiedad Intelectual</h2>
+                <h3>Nuestros Derechos</h3>
+                <p>El Servicio y su contenido original, características y funcionalidad son propiedad de Content Creator IA y están protegidos por leyes de propiedad intelectual. Esto incluye:</p>
+                <ul>
+                    <li>Código fuente y software.</li>
+                    <li>Diseño y elementos visuales.</li>
+                    <li>Marcas comerciales y logotipos.</li>
+                    <li>Documentación y materiales de apoyo.</li>
+                </ul>
+                <h3>Tu Contenido</h3>
+                <p>Conservas todos los derechos sobre el contenido original que introduces en la plataforma. El contenido generado por la IA basado en tus instrucciones te pertenece, sujeto a las siguientes condiciones:</p>
+                <ul>
+                    <li>Nos otorgas una licencia para usar tu contenido con el fin de operar y mejorar el Servicio.</li>
+                    <li>Eres responsable de asegurarte de que el uso del contenido generado no infrinja derechos de terceros.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Pagos y Suscripciones</h2>
+                <h3>Planes de Pago</h3>
+                <p>Algunas funciones del Servicio requieren una suscripción de pago. Los términos de pago incluyen:</p>
+                <ul>
+                    <li>Los precios se muestran en la moneda indicada e incluyen impuestos aplicables.</li>
+                    <li>Las suscripciones se renuevan automáticamente a menos que se cancelen.</li>
+                    <li>Los pagos son procesados por proveedores de pago seguros.</li>
+                </ul>
+                <h3>Política de Reembolsos</h3>
+                <p>Ofrecemos reembolsos según las siguientes condiciones:</p>
+                <ul>
+                    <li>Puedes solicitar un reembolso dentro de los 14 días posteriores a la compra inicial.</li>
+                    <li>Los reembolsos no aplican si has utilizado significativamente el Servicio.</li>
+                    <li>Las renovaciones automáticas no son reembolsables después de procesarse.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Limitación de Responsabilidad</h2>
+                <p>En la máxima medida permitida por la ley aplicable:</p>
+                <ul>
+                    <li>El Servicio se proporciona "tal cual" y "según disponibilidad".</li>
+                    <li>No garantizamos que el contenido generado sea preciso, completo o adecuado para ningún propósito específico.</li>
+                    <li>No seremos responsables de daños indirectos, incidentales, especiales o consecuentes.</li>
+                    <li>Nuestra responsabilidad total está limitada al monto pagado por el Servicio en los últimos 12 meses.</li>
+                </ul>
+                <div class="highlight-box">
+                    <p>Es tu responsabilidad revisar y verificar todo el contenido generado antes de su uso o publicación.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Exención de Garantías</h2>
+                <p>No ofrecemos garantías de ningún tipo, ya sean expresas o implícitas, incluyendo pero no limitado a:</p>
+                <ul>
+                    <li>Garantías de comerciabilidad o idoneidad para un propósito particular.</li>
+                    <li>Garantías de que el Servicio será ininterrumpido o libre de errores.</li>
+                    <li>Garantías sobre la precisión o fiabilidad del contenido generado.</li>
+                    <li>Garantías de que el Servicio cumplirá con tus requisitos específicos.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Indemnización</h2>
+                <p>Aceptas indemnizar, defender y mantener indemne a Content Creator IA, sus directivos, empleados y agentes, de cualquier reclamación, daño, pérdida o gasto (incluyendo honorarios legales razonables) que surja de:</p>
+                <ul>
+                    <li>Tu uso del Servicio.</li>
+                    <li>Tu violación de estos Términos.</li>
+                    <li>Tu violación de derechos de terceros.</li>
+                    <li>El contenido que generes o publiques usando el Servicio.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Terminación</h2>
+                <p>Podemos suspender o terminar tu acceso al Servicio inmediatamente, sin previo aviso, si:</p>
+                <ul>
+                    <li>Violas estos Términos.</li>
+                    <li>Tu uso del Servicio perjudica a otros usuarios.</li>
+                    <li>Incurres en actividades fraudulentas o ilegales.</li>
+                    <li>No pagas las tarifas aplicables.</li>
+                </ul>
+                <p>Puedes cancelar tu cuenta en cualquier momento desde la configuración de tu perfil. Tras la terminación, perderás acceso a tu contenido y datos asociados.</p>
+            </section>
+
+            <section>
+                <h2>Modificaciones del Servicio</h2>
+                <p>Nos reservamos el derecho de:</p>
+                <ul>
+                    <li>Modificar o discontinuar cualquier función del Servicio.</li>
+                    <li>Actualizar los precios con previo aviso.</li>
+                    <li>Cambiar estos Términos publicando la versión actualizada.</li>
+                </ul>
+                <p>Te notificaremos sobre cambios significativos por correo electrónico o mediante un aviso prominente en el Servicio.</p>
+            </section>
+
+            <section>
+                <h2>Ley Aplicable y Jurisdicción</h2>
+                <p>Estos Términos se regirán e interpretarán de acuerdo con las leyes de España, sin tener en cuenta sus disposiciones sobre conflictos de leyes. Cualquier disputa se someterá a la jurisdicción exclusiva de los tribunales de Madrid, España.</p>
+            </section>
+
+            <section>
+                <h2>Disposiciones Generales</h2>
+                <ul>
+                    <li><strong>Divisibilidad:</strong> Si alguna disposición de estos Términos es inválida, las demás disposiciones permanecerán en vigor.</li>
+                    <li><strong>Renuncia:</strong> La falta de ejercicio de un derecho no constituye renuncia al mismo.</li>
+                    <li><strong>Acuerdo completo:</strong> Estos Términos constituyen el acuerdo completo entre tú y Content Creator IA.</li>
+                    <li><strong>Cesión:</strong> No puedes ceder tus derechos bajo estos Términos sin nuestro consentimiento previo.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Contacto</h2>
+                <p>Si tienes preguntas sobre estas Condiciones del Servicio, contáctanos en:</p>
+                <p><strong>Email:</strong> <a href="mailto:legal@contentcreator-ia.com">legal@contentcreator-ia.com</a></p>
+            </section>
+        </main>
+
+        <footer>
+            <nav class="footer-links">
+                <a href="privacy-policy.html">Política de Privacidad</a>
+                <a href="terms-of-service.html">Condiciones del Servicio</a>
+            </nav>
+            <p class="copyright">© 2025 Content Creator IA. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>
+

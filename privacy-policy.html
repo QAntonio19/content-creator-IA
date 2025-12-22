@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad | Content Creator IA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Crimson+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #0a0a0f;
+            --color-bg-secondary: #12121a;
+            --color-text: #e8e6e3;
+            --color-text-muted: #9a9a9a;
+            --color-accent: #00d4aa;
+            --color-accent-glow: rgba(0, 212, 170, 0.15);
+            --color-border: rgba(255, 255, 255, 0.08);
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Crimson Pro', Georgia, serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.8;
+            font-size: 18px;
+            min-height: 100vh;
+        }
+
+        /* Background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 0%, var(--color-accent-glow) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 100%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 100px,
+                    var(--color-border) 100px,
+                    var(--color-border) 101px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 100px,
+                    var(--color-border) 100px,
+                    var(--color-border) 101px
+                );
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--color-border);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--color-text) 0%, var(--color-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .last-updated {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            font-family: var(--font-heading);
+        }
+
+        main {
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        section {
+            margin-bottom: 48px;
+            padding: 32px;
+            background: var(--color-bg-secondary);
+            border-radius: 16px;
+            border: 1px solid var(--color-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--color-accent);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background: var(--color-accent);
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--color-text);
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        ul {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            color: var(--color-text);
+        }
+
+        li::marker {
+            color: var(--color-accent);
+        }
+
+        strong {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        a:hover {
+            border-bottom-color: var(--color-accent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--color-border);
+            margin-top: 60px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 24px;
+            font-family: var(--font-heading);
+            font-size: 14px;
+        }
+
+        .copyright {
+            font-size: 14px;
+            color: var(--color-text-muted);
+            font-family: var(--font-heading);
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 40px 16px;
+            }
+
+            section {
+                padding: 24px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Content Creator IA</div>
+            <h1>Política de Privacidad</h1>
+            <p class="last-updated">Última actualización: 22 de diciembre de 2025</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Introducción</h2>
+                <p>En Content Creator IA, nos comprometemos a proteger tu privacidad. Esta Política de Privacidad explica cómo recopilamos, usamos, divulgamos y protegemos tu información cuando utilizas nuestra plataforma de creación de contenido con inteligencia artificial.</p>
+                <p>Al utilizar nuestros servicios, aceptas las prácticas descritas en esta política. Te recomendamos leerla detenidamente.</p>
+            </section>
+
+            <section>
+                <h2>Información que Recopilamos</h2>
+                <p>Podemos recopilar los siguientes tipos de información:</p>
+                <ul>
+                    <li><strong>Información de cuenta:</strong> Nombre, dirección de correo electrónico, contraseña y preferencias de usuario.</li>
+                    <li><strong>Contenido generado:</strong> Textos, prompts e instrucciones que proporcionas para generar contenido.</li>
+                    <li><strong>Datos de uso:</strong> Información sobre cómo interactúas con nuestra plataforma, incluyendo páginas visitadas, funciones utilizadas y tiempo de uso.</li>
+                    <li><strong>Información técnica:</strong> Dirección IP, tipo de navegador, sistema operativo y datos del dispositivo.</li>
+                    <li><strong>Datos de pago:</strong> Si realizas compras, recopilamos información de facturación procesada de forma segura por terceros.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Uso de la Información</h2>
+                <p>Utilizamos la información recopilada para:</p>
+                <ul>
+                    <li>Proporcionar, mantener y mejorar nuestros servicios de IA.</li>
+                    <li>Personalizar tu experiencia y el contenido generado.</li>
+                    <li>Procesar transacciones y enviar notificaciones relacionadas.</li>
+                    <li>Comunicarnos contigo sobre actualizaciones, ofertas y soporte.</li>
+                    <li>Analizar tendencias de uso para mejorar nuestra plataforma.</li>
+                    <li>Detectar y prevenir fraudes o actividades maliciosas.</li>
+                    <li>Cumplir con obligaciones legales.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Compartición de Datos</h2>
+                <p>No vendemos tu información personal. Podemos compartir datos en las siguientes circunstancias:</p>
+                <ul>
+                    <li><strong>Proveedores de servicios:</strong> Con terceros que nos ayudan a operar la plataforma (hosting, análisis, pagos).</li>
+                    <li><strong>Requisitos legales:</strong> Cuando sea necesario para cumplir con la ley o proteger derechos.</li>
+                    <li><strong>Transferencias comerciales:</strong> En caso de fusión, adquisición o venta de activos.</li>
+                    <li><strong>Con tu consentimiento:</strong> En cualquier otra circunstancia con tu autorización expresa.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Seguridad de los Datos</h2>
+                <p>Implementamos medidas de seguridad técnicas y organizativas para proteger tu información, incluyendo:</p>
+                <ul>
+                    <li>Cifrado de datos en tránsito y en reposo.</li>
+                    <li>Acceso restringido a información personal.</li>
+                    <li>Monitoreo continuo de seguridad.</li>
+                    <li>Auditorías de seguridad regulares.</li>
+                </ul>
+                <p>Sin embargo, ningún método de transmisión por Internet es 100% seguro, y no podemos garantizar seguridad absoluta.</p>
+            </section>
+
+            <section>
+                <h2>Tus Derechos</h2>
+                <p>Dependiendo de tu ubicación, puedes tener los siguientes derechos:</p>
+                <ul>
+                    <li><strong>Acceso:</strong> Solicitar una copia de tus datos personales.</li>
+                    <li><strong>Rectificación:</strong> Corregir información inexacta o incompleta.</li>
+                    <li><strong>Eliminación:</strong> Solicitar la eliminación de tus datos.</li>
+                    <li><strong>Portabilidad:</strong> Recibir tus datos en un formato estructurado.</li>
+                    <li><strong>Oposición:</strong> Oponerte al procesamiento de tus datos.</li>
+                    <li><strong>Retiro del consentimiento:</strong> Retirar tu consentimiento en cualquier momento.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Cookies y Tecnologías Similares</h2>
+                <p>Utilizamos cookies y tecnologías similares para:</p>
+                <ul>
+                    <li>Mantener tu sesión activa.</li>
+                    <li>Recordar tus preferencias.</li>
+                    <li>Analizar el uso de la plataforma.</li>
+                    <li>Mejorar el rendimiento y la experiencia.</li>
+                </ul>
+                <p>Puedes configurar tu navegador para rechazar cookies, aunque esto puede afectar la funcionalidad del servicio.</p>
+            </section>
+
+            <section>
+                <h2>Retención de Datos</h2>
+                <p>Conservamos tu información personal mientras mantengas una cuenta activa o según sea necesario para proporcionarte servicios. También podemos retener datos según sea necesario para cumplir con obligaciones legales, resolver disputas y hacer cumplir nuestros acuerdos.</p>
+            </section>
+
+            <section>
+                <h2>Menores de Edad</h2>
+                <p>Nuestros servicios no están dirigidos a menores de 16 años. No recopilamos intencionalmente información de menores. Si descubrimos que hemos recopilado datos de un menor, los eliminaremos inmediatamente.</p>
+            </section>
+
+            <section>
+                <h2>Cambios a esta Política</h2>
+                <p>Podemos actualizar esta Política de Privacidad periódicamente. Te notificaremos sobre cambios significativos mediante un aviso en nuestra plataforma o por correo electrónico. La fecha de "última actualización" al inicio indica cuándo se realizó la última revisión.</p>
+            </section>
+
+            <section>
+                <h2>Contacto</h2>
+                <p>Si tienes preguntas sobre esta Política de Privacidad o sobre cómo manejamos tus datos, contáctanos en:</p>
+                <p><strong>Email:</strong> <a href="mailto:privacy@contentcreator-ia.com">privacy@contentcreator-ia.com</a></p>
+            </section>
+        </main>
+
+        <footer>
+            <nav class="footer-links">
+                <a href="privacy-policy.html">Política de Privacidad</a>
+                <a href="terms-of-service.html">Condiciones del Servicio</a>
+            </nav>
+            <p class="copyright">© 2025 Content Creator IA. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>
+
