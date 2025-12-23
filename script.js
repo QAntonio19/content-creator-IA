@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Constants
     const NOTIFICATION_DURATION = 4000;
     const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB (initial validation)
-    const MAX_UPLOAD_SIZE = 4 * 1024 * 1024; // 4MB (Vercel limit)
     
     // Detect environment - use proxy for local development
     const IS_LOCAL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
@@ -136,15 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
             imagePreview.src = e.target.result;
             imageUploadArea.classList.add('has-image');
             
-            // Update info with compression notice if needed
+            // Update info
             const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
-            if (file.size > MAX_UPLOAD_SIZE) {
-                imageInfo.textContent = `${file.name} (${sizeMB} MB) - Se comprimirá automáticamente`;
-                imageInfo.style.color = '#f39c12';
-            } else {
-                imageInfo.textContent = `${file.name} (${sizeMB} MB)`;
-                imageInfo.style.color = '';
-            }
+            imageInfo.textContent = `${file.name} (${sizeMB} MB)`;
         };
         reader.readAsDataURL(file);
     }
@@ -160,85 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
         imageInfo.textContent = '';
     }
 
-    // Compress image if it exceeds the upload limit
-    async function compressImage(file, maxSizeBytes) {
-        return new Promise((resolve, reject) => {
-            // If file is already small enough, return as is
-            if (file.size <= maxSizeBytes) {
-                console.log('📷 Imagen dentro del límite, no necesita compresión');
-                resolve(file);
-                return;
-            }
-
-            console.log(`📷 Comprimiendo imagen de ${(file.size / 1024 / 1024).toFixed(2)} MB...`);
-
-            const img = new Image();
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-
-            img.onload = () => {
-                // Calculate new dimensions (reduce if very large)
-                let { width, height } = img;
-                const maxDimension = 2048; // Max width or height
-
-                if (width > maxDimension || height > maxDimension) {
-                    if (width > height) {
-                        height = (height / width) * maxDimension;
-                        width = maxDimension;
-                    } else {
-                        width = (width / height) * maxDimension;
-                        height = maxDimension;
-                    }
-                }
-
-                canvas.width = width;
-                canvas.height = height;
-
-                // Draw image on canvas
-                ctx.drawImage(img, 0, 0, width, height);
-
-                // Try different quality levels to get under the limit
-                const tryCompress = (quality) => {
-                    canvas.toBlob(
-                        (blob) => {
-                            if (!blob) {
-                                reject(new Error('Error al comprimir imagen'));
-                                return;
-                            }
-
-                            console.log(`📷 Calidad ${Math.round(quality * 100)}%: ${(blob.size / 1024 / 1024).toFixed(2)} MB`);
-
-                            if (blob.size <= maxSizeBytes || quality <= 0.3) {
-                                // Success or minimum quality reached
-                                const compressedFile = new File([blob], file.name.replace(/\.[^.]+$/, '.jpg'), {
-                                    type: 'image/jpeg',
-                                    lastModified: Date.now()
-                                });
-                                console.log(`✅ Imagen comprimida: ${(compressedFile.size / 1024 / 1024).toFixed(2)} MB`);
-                                resolve(compressedFile);
-                            } else {
-                                // Try lower quality
-                                tryCompress(quality - 0.1);
-                            }
-                        },
-                        'image/jpeg',
-                        quality
-                    );
-                };
-
-                // Start with 85% quality
-                tryCompress(0.85);
-            };
-
-            img.onerror = () => reject(new Error('Error al cargar imagen para compresión'));
-
-            // Load image from file
-            const reader = new FileReader();
-            reader.onload = (e) => { img.src = e.target.result; };
-            reader.onerror = () => reject(new Error('Error al leer archivo'));
-            reader.readAsDataURL(file);
-        });
-    }
 
     async function handleSend() {
         const message = messageInput.value.trim();
@@ -268,24 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showProcessingStatus('Preparando imagen...');
 
         try {
-            // Compress image if needed (Vercel has 4.5MB limit)
             let imageToSend = currentImageFile;
-            if (currentImageFile.size > MAX_UPLOAD_SIZE) {
-                showProcessingStatus('Comprimiendo imagen...');
-                try {
-                    imageToSend = await compressImage(currentImageFile, MAX_UPLOAD_SIZE);
-                    const originalSize = (currentImageFile.size / 1024 / 1024).toFixed(2);
-                    const newSize = (imageToSend.size / 1024 / 1024).toFixed(2);
-                    console.log(`📷 Imagen comprimida: ${originalSize} MB → ${newSize} MB`);
-                } catch (compressError) {
-                    console.error('❌ Error comprimiendo imagen:', compressError);
-                    showNotification('Error al comprimir imagen. Intenta con una imagen más pequeña.', 'error');
-                    sendBtn.classList.remove('loading');
-                    sendBtn.disabled = false;
-                    hideProcessingStatus();
-                    return;
-                }
-            }
 
             showProcessingStatus('Enviando datos...');
 
